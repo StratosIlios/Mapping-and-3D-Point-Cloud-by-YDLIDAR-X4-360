@@ -10,10 +10,9 @@ int main (int argc, char **argv)
 	/** Initialization of service caller node and create object n **/	
 	ros::init(argc,argv,"pcl_3d");
 	ros::NodeHandle n;
-
 	/** Waiting for service to be advertised and availlable ***/
 	ros::service::waitForService("assemble_scans"); 
-
+  
 	/** Calling the Service with the Handle way. The n is the usual ros::NodeHandle object. 
 	    We are calling its service-Client method. The laser_assembler::AssembleScans is the name 
 	    of the service object. The "assemble_scans" is a string naming the service that we want 
