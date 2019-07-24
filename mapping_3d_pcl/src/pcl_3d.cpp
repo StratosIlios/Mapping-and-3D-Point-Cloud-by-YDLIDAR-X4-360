@@ -19,8 +19,7 @@ int main (int argc, char **argv)
 	    of the service object. The "assemble_scans" is a string naming the service that we want 
 	    to call. **/
 	ros::ServiceClient client=n.serviceClient<laser_assembler::AssembleScans>("assemble_scans");
-	
-	
+		
 	/** Create the publisher and the topic for PCL **/	
 	ros::Publisher point_cloud_publisher_;	
 	point_cloud_publisher_=n.advertise<sensor_msgs::PointCloud>("/cloud", 100, false);
@@ -28,7 +27,6 @@ int main (int argc, char **argv)
 	/** Create the topic for PCL2 **/
 	/*ros::Publisher point_cloud2_publisher_;
 	point_cloud2_publisher_=n.advertise<sensor_msgs::PointCloud2>("/cloud2", 100, false);**/
-
 
 	/** Rate allow to specify a frequency that we want to loop at. Here is 10Hz **/
 	ros::Rate loop_rate(10);
@@ -47,20 +45,15 @@ int main (int argc, char **argv)
 			{
 				/** Publishes the response of the service for PCL **/				
 				point_cloud_publisher_.publish(srv.response.cloud);
-				//sensor_msgs::convertPointCloudToPointCloud2(srv.response.cloud, point_cloud2);
-				
+				//sensor_msgs::convertPointCloudToPointCloud2(srv.response.cloud, point_cloud2);				
 				/** Publishes the response of the service for PCL2 **/
 				//point_cloud2_publisher_.publish(point_cloud2);
-
-			} 	
-			
+			} 				
 		}
 		else
 		{
 			printf("Service call failed\n");
 			loop_rate.sleep();
 		}
-
 	}
-
 }
