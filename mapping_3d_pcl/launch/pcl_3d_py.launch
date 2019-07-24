@@ -1,0 +1,13 @@
+<launch>
+
+	<node type="laser_scan_assembler" pkg="laser_assembler" name="laser_assembler" output="screen">
+		<param	name="max_scans"			type="int"		value="400"/>
+		<param	name="fixed_frame"			type="string"	value="laser_frame"/>
+		<param	name="tf_cache_time_secs"	type="double"	value="5"/>
+	</node>
+
+	<node type="pcl_3d.py" pkg="mapping_3d_pcl" name="pcl_3d" output="screen">
+	</node>
+
+</launch>
+
